@@ -15,6 +15,7 @@
                     @endif
 
                     {{ $user->name }}, You are logged in!
+                    <a href="{{ route('admin.bathrooms.index')}}" class="btn btn-link">Bathrooms</a>
                 </div>
             </div>
         </div>

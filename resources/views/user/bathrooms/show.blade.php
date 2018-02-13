@@ -38,13 +38,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<a href="{{ route('bathrooms.index') }}" class="btn btn-default">Back</a>
-					<a href="{{ route('bathrooms.edit', array('bathroom' => $bathroom)) }}" class="btn btn-warning">Edit</a>
-				<form style="display:inline-block" method="POST" action="{{ route('bathrooms.destroy', array('bathroom' => $bathroom)) }}">
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<button type="submit" class="form-control btn btn-danger">Delete</button>
-				</form>
+					<a href="{{ route('user.bathrooms.index') }}" class="btn btn-default">Back</a>
 			</div>
 		</div>
 	</div>

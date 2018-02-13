@@ -10,7 +10,6 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					Bathrooms
-					<a href="{{ route('bathrooms.create') }}" class="btn btn-link">Add</a>
 				</div>
 
 				<div class="panel-body">
@@ -37,13 +36,13 @@
 								<td>{{ $bathroom->price}}</td>
 								<td>{{ $bathroom->rating}}</td>
 								<td>
-									<a href="{{route('bathrooms.show', array('bathroom' => $bathroom))}}" class="btn btn-default">View</a>
-									<a href="{{route('bathrooms.edit', array('bathroom' => $bathroom))}}" class="btn btn-default">Edit</a>
-									<form style="display:inline-block" method="POST" action="{{ route('bathrooms.destroy', array('bathroom' => $bathroom)) }}">
+									<a href="{{route('user.bathrooms.show', array('bathroom' => $bathroom))}}" class="btn btn-default">View</a>
+									<!-- <a href="{{route('user.bathrooms.edit', array('bathroom' => $bathroom))}}" class="btn btn-default">Edit</a>
+									<form style="display:inline-block" method="POST" action="{{ route('user.bathrooms.destroy', array('bathroom' => $bathroom)) }}">
 										<input type="hidden" name="_method" value="DELETE">
 										<input type="hidden" name="_token" value="{{ csrf_token() }}">
 										<button type="submit" class="form-control btn btn-danger">Delete</button>
-										</form>
+										</form> -->
 								</td>
 							</tr>
 					@endforeach

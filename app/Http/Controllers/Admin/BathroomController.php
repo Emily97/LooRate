@@ -1,13 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
+use Validator;
 use App\Bathroom;
 
 class BathroomController extends Controller
 {
+
+    public function __construct()
+      {
+      $this->middleware('auth');
+      $this->middleware('role:admin');
+      }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +25,7 @@ class BathroomController extends Controller
     {
         $bathrooms = Bathroom::all();
 
-        return view('bathrooms.index')->with(array('bathrooms' => $bathrooms
+        return view('admin.bathrooms.index')->with(array('bathrooms' => $bathrooms
             ));
     }
 
@@ -28,7 +36,7 @@ class BathroomController extends Controller
      */
     public function create()
     {
-        return view('bathrooms.create');
+        return view('admin.bathrooms.create');
     }
 
     /**
@@ -59,7 +67,7 @@ class BathroomController extends Controller
 
         $session = $request->session()->flash('message','Bathroom adding succesfully');
         
-        return redirect()->route('bathrooms.index');
+        return redirect()->route('admin.bathrooms.index');
         
         
     }
@@ -73,7 +81,7 @@ class BathroomController extends Controller
     public function show($id)
     {
         $bathroom = Bathroom::findOrFail($id);
-        return view('bathrooms.show')->with(array(
+        return view('admin.bathrooms.show')->with(array(
             'bathroom' => $bathroom
             ));
     }
@@ -87,7 +95,7 @@ class BathroomController extends Controller
     public function edit($id)
     {
         $bathroom = Bathroom::findOrFail($id);
-        return view('bathrooms.edit')->with(array(
+        return view('admin.bathrooms.edit')->with(array(
             'bathroom' => $bathroom
             ));
     }
@@ -122,7 +130,7 @@ class BathroomController extends Controller
 
         $session = $request->session()->flash('message','Bathroom updated succesfully');
         
-        return redirect()->route('bathrooms.index'); 
+        return redirect()->route('admin.bathrooms.index'); 
     }
 
     /**
@@ -139,6 +147,6 @@ class BathroomController extends Controller
 
         Session::flash('message', 'Bathroom deleted successfully!');
 
-        return redirect()->route('bathrooms.index');
+        return redirect()->route('admin.bathrooms.index');
     }
 }

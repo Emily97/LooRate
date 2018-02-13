@@ -19,7 +19,7 @@
 							</ul>
 						</div>
 					@endif
-					<form method="POST" action="{{ route('bathrooms.update', array('bathroom' => $bathroom)) }}">
+					<form method="POST" action="{{ route('admin.bathrooms.update', array('bathroom' => $bathroom)) }}">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group">
@@ -46,7 +46,7 @@
 							<label for="rating">Rating</label>
 							<input type="text" class="form-control" id="rating" name="rating" value="{{ old('rating', $bathroom->rating) }}"/>
 						</div>
-						<a href="{{ route('bathrooms.index') }}" class="btn btn-default">Cancel</a>
+						<a href="{{ route('admin.bathrooms.index') }}" class="btn btn-default">Cancel</a>
 						<button type="submit" class="btn btn-primary pull-right">Submit</button>
 					</form>
 				</div>
