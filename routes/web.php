@@ -36,3 +36,9 @@ Route::post  ('/user/bathrooms/store',     'User\BathroomController@store'  )->n
 Route::get   ('/user/bathrooms/{id}/edit', 'User\BathroomController@edit'   )->name('user.bathrooms.edit');
 Route::put   ('/user/bathrooms/{id}',      'User\BathroomController@update' )->name('user.bathrooms.update');
 Route::delete('/user/bathrooms/{id}',      'User\BathroomController@destroy')->name('user.bathrooms.destroy');
+
+// Comments Routes
+Route::delete('/admin/bathroom/{id}/comments/{cid}', 'Admin\CommentController@destroy')->name('admin.comments.destroy');
+
+Route::get   ('/user/bathroom/{id}/comments/create', 'User\CommentController@create')->name('user.comments.create');
+Route::post  ('/user/bathroom/{id}/comments/store',  'User\CommentController@store')->name('user.comments.store');

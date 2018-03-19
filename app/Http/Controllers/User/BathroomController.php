@@ -39,7 +39,7 @@ class BathroomController extends Controller
         return redirect()->route('user.bathrooms.index');
     }
 
-    
+
     public function show($id)
     {
         $bathroom = Bathroom::findOrFail($id);
@@ -48,4 +48,10 @@ class BathroomController extends Controller
             ));
     }
 
+    public function apiIndex()
+    {
+        $bathrooms = Bathroom::all();
+
+        return $bathrooms;
+    }
 }

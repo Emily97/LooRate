@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/user/bathrooms/',           'API\BathroomController@index'  );
+Route::get('/admin/bathrooms/',           'API\BathroomController@index'  );
+
+Route::get('/user/bathrooms/{id}',       'API\BathroomController@show');
+Route::get('/admin/bathrooms/{id}',       'API\BathroomController@show');
+
+Route::post('/user/bathrooms/',          'API\BathroomController@store');
+Route::put('/admin/bathrooms/{id}',      'API\BathroomController@update');
+Route::delete('/admin/bathrooms/{id}',   'API\BathroomController@delete');

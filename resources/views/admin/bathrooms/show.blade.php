@@ -45,6 +45,37 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<button type="submit" class="form-control btn btn-danger">Delete</button>
 				</form>
+
+										<h2>
+                        Comments
+                    </h2>
+                    @if (count($bathroom->comments()->get()) == 0)
+                    <p>There are no comments for this bathroom.</p>
+                    @else
+                    <table class="table">
+                        <thead>
+                            <th><strong>Title</strong></th>
+                            <th>Body</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            @foreach ($bathroom->comments()->get() as $comment)
+                            <tr>
+                                <th>{{ $comment->title }}</th>
+                                <th>{{ $comment->body }}</th>
+                                <th>
+                                    <form style="display:inline-block" method="POST" action="{{ route('admin.comments.destroy', array('id' => $bathroom->id, 'cid' => $comment->id)) }}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="form-control btn btn-danger">Delete</a>
+                                    </form>
+                                </th>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+ 									@endif
+					</div>
 			</div>
 		</div>
 	</div>
