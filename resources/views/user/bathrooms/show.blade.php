@@ -6,7 +6,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Bathroom: {{ $bathroom->title }}
+					<h3>Bathroom: {{ $bathroom->title }}</h3>
 				</div>
 
 				<div class="panel-body">
@@ -40,10 +40,10 @@
 					</table>
 					<a href="{{ route('user.bathrooms.index') }}" class="btn btn-default">Back</a>
 
-					<h2>
+					<h3>
                         Comments
                         <a href="{{ route('user.comments.create', $bathroom->id) }}" class="btn btn-link btn-bathroom-add">Add</a>
-                    </h2>
+                    </h3>
                     @if (count($bathroom->comments()->get()) == 0)
                     <p>There are no comments for this bathroom.</p>
                     @else

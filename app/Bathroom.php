@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bathroom extends Model
 {
-  public function comments() {
-      return $this->hasMany('App\Comment');
-  }
+    protected $fillable = ['title', 'address', 'longitude', 'latitude', 'price', 'rating'];
+
+      public function comments() {
+          return $this->hasMany('App\Comment');
+      }
 }

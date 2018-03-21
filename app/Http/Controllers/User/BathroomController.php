@@ -10,6 +10,14 @@ use App\Bathroom;
 
 class BathroomController extends Controller
 {
+    public function bathroom(Request $request)
+    {
+        $lat=$request->latitude;
+        $lng=$request->longitude;
+
+        $bathroom = Bathroom::whereBetween('latitude',[$lat-10.1,$lat+10.1])->whereBetween('longitude',[$lng-10.1,$lng+10.1])->get();
+        return $bathroom;
+    }
 
     public function __construct()
       {

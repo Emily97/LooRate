@@ -15,15 +15,11 @@ class BathroomController extends Controller
       {
       }
 
-
     public function index()
     {
         $bathrooms = Bathroom::all();
         $status = 200;
-        $response = array(
-          'status' => $status,
-          'data' => $bathrooms
-        );
+        $response = $bathrooms;
 
         return response()->json($response);
     }

@@ -17,8 +17,8 @@ class CreateBathroomTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('address');
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->float('longitude');
+            $table->float('latitude');
             $table->decimal('price', 4, 2);
             $table->string('rating');
             $table->timestamps();

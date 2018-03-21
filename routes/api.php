@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::post('/bathrooms', 'BathroomController@bathroom');
 
 Route::get('/user/bathrooms/',           'API\BathroomController@index'  );
 Route::get('/admin/bathrooms/',           'API\BathroomController@index'  );
