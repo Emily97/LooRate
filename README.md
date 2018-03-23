@@ -24,8 +24,8 @@ http://localhost/phpmyadmin/
 - To login into the application there are two logins made for different roles such as users and admins.
 ```
 Admin
-Email: mary@bloggs.ie       Password: secret
+Email: mary@bloggs.com       Password: secret
 
 User
-Email: joe@bloggs.ie        Password: secret
+Email: joe@bloggs.com        Password: secret
 ```
