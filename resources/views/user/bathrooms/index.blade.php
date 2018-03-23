@@ -36,7 +36,7 @@
 								<td>{{ $bathroom->price}}</td>
 								<td>{{ $bathroom->rating}}</td>
 								<td>
-									<a href="{{route('user.bathrooms.show', array('bathroom' => $bathroom))}}" class="btn btn-default">View</a>
+									<a href="{{route('user.bathrooms.show', array('bathroom' => $bathroom))}}" class="btn btn-info">View</a>
 									<!-- <a href="{{route('user.bathrooms.edit', array('bathroom' => $bathroom))}}" class="btn btn-default">Edit</a>
 									<form style="display:inline-block" method="POST" action="{{ route('user.bathrooms.destroy', array('bathroom' => $bathroom)) }}">
 										<input type="hidden" name="_method" value="DELETE">

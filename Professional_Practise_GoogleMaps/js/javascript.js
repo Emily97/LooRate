@@ -51,7 +51,7 @@ function handleLocationError(browserHasGeoLocation, infoWindow, pos) {
 function performSearch() {
   var request = {
     bounds: map.getBounds(),
-    keyword: 'applegreen'
+    keyword: 'public bathroom'
   };
   service.radarSearch(request, callback);
 }

@@ -6,34 +6,34 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Bathroom: {{ $bathroom->title }}
+					<h3>Bathroom: {{ $bathroom->title }}</h3>
 				</div>
 
 				<div class="panel-body">
 					<table class="table table-hover">
 						<tbody>
 							<tr>
-								<td>Title</td>
+								<th>Title</th>
 								<td>{{ $bathroom->title }}</td>
 							</tr>
 							<tr>
-								<td>Address</td>
+								<th>Address</th>
 								<td>{{ $bathroom->address }}</td>
 							</tr>
 							<tr>
-								<td>Longitude</td>
+								<th>Longitude</th>
 								<td>{{ $bathroom->longitude }}</td>
 							</tr>
 							<tr>
-								<td>Latitude</td>
+								<th>Latitude</th>
 								<td>{{ $bathroom->latitude }}</td>
 							</tr>
 							<tr>
-								<td>Price</td>
+								<th>Price</th>
 								<td>{{ $bathroom->price }}</td>
 							</tr>
 							<tr>
-								<td>Rating</td>
+								<th>Rating</th>
 								<td>{{ $bathroom->rating }}</td>
 							</tr>
 						</tbody>
@@ -45,24 +45,34 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<button type="submit" class="form-control btn btn-danger">Delete</button>
 				</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-										<h2>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>
                         Comments
                     </h2>
+				</div>
+				<div class="panel-body">
                     @if (count($bathroom->comments()->get()) == 0)
                     <p>There are no comments for this bathroom.</p>
                     @else
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
-                            <th><strong>Title</strong></th>
+                            <th>Title</th>
                             <th>Body</th>
                             <th>Actions</th>
                         </thead>
                         <tbody>
                             @foreach ($bathroom->comments()->get() as $comment)
                             <tr>
-                                <th>{{ $comment->title }}</th>
-                                <th>{{ $comment->body }}</th>
+                                <td>{{ $comment->title }}</td>
+                                <td>{{ $comment->body }}</td>
                                 <th>
                                     <form style="display:inline-block" method="POST" action="{{ route('admin.comments.destroy', array('id' => $bathroom->id, 'cid' => $comment->id)) }}">
                                         <input type="hidden" name="_method" value="DELETE">
@@ -74,8 +84,8 @@
                             @endforeach
                         </tbody>
                     </table>
- 									@endif
-					</div>
+ 				@endif
+				</div>	
 			</div>
 		</div>
 	</div>

@@ -46,7 +46,7 @@
 							<input type="text" class="form-control" id="rating" name="rating" value="{{ old('rating') }}" />
 						</div>
 						<a href="{{ route('admin.bathrooms.index') }}" class="btn btn-default">Cancel</a>
-						<button type="submit" class="btn btn-primary pull-right">Submit</button>
+						<button type="submit" class="btn btn-success pull-right">Submit</button>
 					</form>
 				</div>
 			</div>

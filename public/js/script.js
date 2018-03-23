@@ -1,5 +1,7 @@
 var map;
 var myLatLng;
+var infoWindow;
+
 $(document).ready(function(){
 
     geoLocationInit();
@@ -21,7 +23,8 @@ $(document).ready(function(){
 
         myLatLng = new google.maps.LatLng(latval,lngval);
         createMap(myLatLng);
-        // nearbySearch(myLatLng, "school");
+        nearbySearch(myLatLng);
+        console.log();
         bathroom(latval,lngval);
     }
 
@@ -52,33 +55,45 @@ $(document).ready(function(){
             icon: icn,
             title: title
         });
+
+        var infoWindow = new google.maps.InfoWindow({
+            content:title
+        });
+
+        marker.addListener('click', function(){
+            infoWindow.open(map,marker);
+        });
+        google.maps.event.addListener(map, 'click', function() {
+				infoWindow.close();
+		});
     }
 
     //nearby search
-    // function nearbySearch(myLatLng, type) {
-    //     var request = {
-    //         location: myLatLng,
-    //         radius: '1500',
-    //         types: [type]
-    //     };
-    //
-    //     service = new google.maps.places.PlacesService(map);
-    //     service.nearbySearch(request, callback);
-    //
-    //     function callback(results, status) {
-    //
-    //         console.log(results);
-    //         if(status == google.maps.places.PlacesServiceStatus.OK){
-    //             for(var i = 0; i < results.length; i++) {
-    //                 var place = results[i];
-    //                 latlng = place.geometry.location;
-    //                 icn = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-    //                 name = place.name;
-    //                 createMarker(latlng, icn, name);
-    //             }
-    //         }
-    //     }
-    // }
+    function nearbySearch(myLatLng) {
+        var request = {
+            location: myLatLng,
+            radius: '50000',
+            name: 'public bathrooms'
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+
+        function callback(results, status) {
+
+            console.log(results);
+            if(status == google.maps.places.PlacesServiceStatus.OK){
+                for(var i = 0; i < results.length; i++) {
+                    var place = results[i];
+                    latlng = place.geometry.location;
+                    icn = 'https://developers.google.com/maps/documentation/javascript/images/circle.png';
+                    name = place.name;
+                    createMarker(latlng, icn, name);
+                    console.log(results[i]);
+                }
+            }
+        }
+    }
 
     function bathroom(lat,lng) {
         $.post('http://localhost/loorate/public/api/user/bathrooms/', {lat:lat, lng:lng}, function(match){
@@ -96,4 +111,16 @@ $(document).ready(function(){
             });
         });
     }
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function() {
+      searchBox.setBounds(map.getBounds());
+    });
+
+
 });

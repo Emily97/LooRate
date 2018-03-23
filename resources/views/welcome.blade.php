@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="container">
-    <h1>Hello</h1>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box" autocomplete="on">
+            <div id = "map">
 
-    <div id = "map">
-
+            </div>
     </div>
 </div>
 
